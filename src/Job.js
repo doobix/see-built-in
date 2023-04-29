@@ -6,7 +6,7 @@ function Job({companyName, title, date, url, logo}) {
   return (
     <div className="Job">
       <div className="logo">
-        <img src={imgUrl + logo} />
+        <img src={imgUrl + logo} alt={companyName} />
       </div>
       <div className="data">
         <div>
