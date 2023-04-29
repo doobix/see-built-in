@@ -1,3 +1,5 @@
+![CI/CD Status](https://github.com/doobix/see-built-in/actions/workflows/main.yml/badge.svg?branch=main)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
