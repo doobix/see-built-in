@@ -1,0 +1,9 @@
+.Job {
+  margin-top: 10px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.logo {
+  margin-right: 10px;
+}
