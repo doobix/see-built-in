@@ -1,15 +1,19 @@
 import Job from './Job';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [builtinData, setBuiltinData] = useState({});
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const url = "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=149&subcategories=&experiences=1%2C1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=2&per_page=500&page=1&search=frontend&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true";
   async function getData() {
     const data = await fetch(url).then((res) => res.json()).then(data => data);
     setBuiltinData(data);
   }
-  getData();
 
   // Change companies to a map
   const companies = builtinData.companies || [];
