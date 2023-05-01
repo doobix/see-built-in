@@ -1,6 +1,6 @@
 import Job from './Job';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useQuery } from './hooks/use-query';
 import { convertCategoryTitle } from './utils/convert-category-title';
 
@@ -14,6 +14,7 @@ function App() {
   const [category, setCategory] = useState('frontend');
   const query = useQuery();
 
+  // Get category from query param
   useEffect(() => {
     if (query.get('cat') === 'hr') {
       setCategory('hr');
@@ -22,15 +23,24 @@ function App() {
     }
   }, [query]);
 
+  // Fetch Built In data
   useEffect(() => {
-    getData();
-  }, [category]);
+    let shouldGetData = true;
 
-  async function getData() {
-    const url = urls[category];
-    const data = await fetch(url).then((res) => res.json()).then(data => data);
-    setBuiltinData(data);
-  }
+    const getData = async () => {
+      const url = urls[category];
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (shouldGetData) {
+        setBuiltinData(data);
+      }
+    }
+
+    getData();
+
+    return () => shouldGetData = false;
+  }, [category]);
 
   // Change companies to a map
   const companies = builtinData.companies || [];
