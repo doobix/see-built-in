@@ -1,16 +1,33 @@
 import Job from './Job';
 import './App.css';
 import { useEffect, useState } from 'react';
+import { useQuery } from './hooks/use-query';
+
+const urls = {
+  frontend: "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=149&subcategories=&experiences=1%2C1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=2&per_page=100&page=1&search=frontend&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true",
+  // hr: "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=150&subcategories=&experiences=1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=&per_page=100&page=1&search=&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&elite=true&national=true",
+  hr: "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=150&subcategories=&experiences=1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=&per_page=100&page=1&search=&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true",
+}
 
 function App() {
   const [builtinData, setBuiltinData] = useState({});
+  const [category, setCategory] = useState('frontend');
+  const query = useQuery();
+
+  useEffect(() => {
+    if (query.get('cat') === 'hr') {
+      setCategory('hr');
+    } else {
+      setCategory('frontend');
+    }
+  }, [query]);
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [category]);
 
-  const url = "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=149&subcategories=&experiences=1%2C1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=2&per_page=500&page=1&search=frontend&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true";
   async function getData() {
+    const url = urls[category];
     const data = await fetch(url).then((res) => res.json()).then(data => data);
     setBuiltinData(data);
   }
@@ -40,7 +57,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Built In Jobs (Frontend)</h1>
       <div>({jobs.length} jobs)</div>
       <div className="jobs">
         {jobs.map((job, index) => (
