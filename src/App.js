@@ -66,7 +66,7 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div>
       <div>({jobs.length} {convertCategoryTitle(category)} jobs)</div>
       <div className="jobs">
         {jobs.map((job, index) => (
