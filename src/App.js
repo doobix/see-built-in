@@ -1,6 +1,6 @@
 import Job from './Job';
 import './App.css';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from './hooks/use-query';
 import { convertCategoryTitle } from './utils/convert-category-title';
 
