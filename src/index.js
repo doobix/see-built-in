@@ -22,7 +22,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+],
+{
+  basename: '/see-built-in',
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -9,10 +9,10 @@ export default function Root() {
         <nav className="nav">
           <ul>
             <li>
-              <Link to={`?cat=frontend`}>Frontend</Link>
+              <Link to={`/?cat=frontend`}>Frontend</Link>
             </li>
             <li>
-              <Link to={`?cat=hr`}>HR + Recruiting</Link>
+              <Link to={`/?cat=hr`}>HR + Recruiting</Link>
             </li>
           </ul>
         </nav>
