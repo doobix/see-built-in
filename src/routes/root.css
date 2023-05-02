@@ -2,16 +2,14 @@
   text-align: center;
 }
 
+.nav ul {
+  padding: 0;
+}
+
 .nav li {
   display: inline;
 }
 
 .nav li + li::before {
   content: " | ";
-}
-
-.jobs {
-  display: inline-block;
-  border: 1px solid black;
-  padding: 10px;
 }
