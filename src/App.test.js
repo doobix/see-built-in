@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-test('renders Built In Jobs heading', () => {
-render(
+test('renders loading skeleton', () => {
+  const { container } = render(
     <Router>
       <App />
     </Router>
   );
-  const element = screen.getByText(/0 frontend jobs/i);
-  expect(element).toBeInTheDocument();
+  const element = container.getElementsByClassName('MuiSkeleton-root');
+  expect(element.length).toBe(40);
 });

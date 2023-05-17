@@ -1,8 +1,9 @@
 import Job from './Job';
-import './App.css';
+import JobSkeleton from './JobSkeleton';
 import { useEffect, useState } from 'react';
 import { useQuery } from './hooks/use-query';
 import { convertCategoryTitle } from './utils/convert-category-title';
+import './App.css';
 
 const urls = {
   frontend: "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=149&subcategories=&experiences=1%2C1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=2&per_page=100&page=1&search=frontend&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true",
@@ -11,6 +12,7 @@ const urls = {
 
 function App() {
   const [builtinData, setBuiltinData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState('frontend');
   const query = useQuery();
 
@@ -28,12 +30,14 @@ function App() {
     let shouldGetData = true;
 
     const getData = async () => {
+      setIsLoading(true);
       const url = urls[category];
       const response = await fetch(url);
       const data = await response.json();
 
       if (shouldGetData) {
         setBuiltinData(data);
+        setIsLoading(false);
       }
     }
 
@@ -41,6 +45,16 @@ function App() {
 
     return () => shouldGetData = false;
   }, [category]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <div className="jobs">
+          {Array.from({length: 10}, (_, index) => <JobSkeleton key={index} />)}
+        </div>
+      </div>
+    );
+  }
 
   // Change companies to a map
   const companies = builtinData.companies || [];
