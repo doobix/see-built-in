@@ -7,7 +7,7 @@ const urls = {
 
 export function useData(category) {
   const [builtinData, setBuiltinData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
     // Fetch Built In data
     useEffect(() => {
