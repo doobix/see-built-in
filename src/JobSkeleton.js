@@ -8,9 +8,9 @@ function JobSkeleton() {
         <Skeleton variant="rectangular" width={64} height={64} />
       </div>
       <div className="data">
-        <Skeleton width={350} height={18} />
-        <Skeleton width={350} height={18} />
-        <Skeleton width={350} height={18} />
+        <Skeleton width={250} height={18} />
+        <Skeleton width={250} height={18} />
+        <Skeleton width={250} height={18} />
       </div>
     </div>
   );
