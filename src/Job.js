@@ -6,7 +6,7 @@ function Job({companyName, title, date, url, logo}) {
   return (
     <div className="Job">
       <div className="logo">
-        <img src={imgUrl + logo} alt={companyName} />
+        <a href={url} target="_blank"><img src={imgUrl + logo} alt={companyName} /></a>
       </div>
       <div className="data">
         <div>
@@ -16,7 +16,7 @@ function Job({companyName, title, date, url, logo}) {
           {date}
         </div>
         <div>
-          <a href={url}>{title}</a>
+          <a href={url} target="_blank">{title}</a>
         </div>
       </div>
     </div>
