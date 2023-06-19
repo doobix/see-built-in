@@ -1,7 +1,6 @@
 .Job {
   padding: 10px;
   display: flex;
-  flex-flow: row wrap;
   text-align: left;
 }
 
@@ -10,5 +9,10 @@
 }
 
 .logo {
+  width: 64px;
   margin-right: 10px;
+}
+
+.data {
+  min-width: 0;
 }
