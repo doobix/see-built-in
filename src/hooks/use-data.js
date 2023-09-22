@@ -14,10 +14,10 @@ export function useData(category) {
       let shouldGetData = true;
   
       const getData = async () => {
+        setIsLoading(true);
         const url = urls[category];
         const response = await fetch(url);
         const data = await response.json();
-        setIsLoading(true);
 
         if (shouldGetData) {
           setBuiltinData(data);
