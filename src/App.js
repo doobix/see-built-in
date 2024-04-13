@@ -78,6 +78,8 @@ function App() {
             date={job.sort_job}
             url={job.how_to_apply}
             logo={companyMap[job.company_id].logo}
+            salaryMin={job.salary_min}
+            salaryMax={job.salary_max}
           />
         ))}
       </div>
