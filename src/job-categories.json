@@ -1,0 +1,77 @@
+[
+  {
+    "id": 158,
+    "name": "Content",
+    "urlName": "content"
+  },
+  {
+    "id": 390,
+    "name": "Customer Success",
+    "urlName": "customer-success"
+  },
+  {
+    "id": 391,
+    "name": "Cybersecurity + IT",
+    "urlName": "cybersecurity-it"
+  },
+  {
+    "id": 147,
+    "name": "Data + Analytics",
+    "urlName": "data-analytics"
+  },
+  {
+    "id": 148,
+    "name": "Design + UX",
+    "urlName": "design-ux"
+  },
+  {
+    "id": 149,
+    "name": "Developer + Engineer",
+    "urlName": "dev-engineering"
+  },
+  {
+    "id": 146,
+    "name": "Finance",
+    "urlName": "finance"
+  },
+  {
+    "id": 150,
+    "name": "HR + Recruiting",
+    "urlName": "hr"
+  },
+  {
+    "id": 151,
+    "name": "Internships",
+    "urlName": "internships"
+  },
+  {
+    "id": 152,
+    "name": "Legal",
+    "urlName": "legal"
+  },
+  {
+    "id": 153,
+    "name": "Marketing",
+    "urlName": "marketing"
+  },
+  {
+    "id": 154,
+    "name": "Operations",
+    "urlName": "operations"
+  },
+  {
+    "id": 155,
+    "name": "Product",
+    "urlName": "product"
+  },
+  {
+    "id": 156,
+    "name": "Project Mgmt",
+    "urlName": "project-management"
+  },
+  {
+    "id": 157,
+    "name": "Sales",
+    "urlName": "sales"
+  }
+]
