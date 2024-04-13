@@ -1,22 +1,31 @@
-import Job from './Job';
-import JobSkeleton from './JobSkeleton';
-import { useEffect, useState } from 'react';
-import { useQuery } from './hooks/use-query';
-import { useData } from './hooks/use-data';
-import { convertCategoryTitle } from './utils/convert-category-title';
-import './App.css';
+import "./App.css";
+
+import { useEffect, useState } from "react";
+
+import Job from "./Job";
+import JobSkeleton from "./JobSkeleton";
+import { convertCategoryTitle } from "./utils/convert-category-title";
+import { useData } from "./hooks/use-data";
+import { useQuery } from "./hooks/use-query";
 
 function App() {
-  const [category, setCategory] = useState('frontend');
+  const [category, setCategory] = useState("frontend");
   const query = useQuery();
   const [builtinData, isLoading] = useData(category);
 
   // Get category from query param
   useEffect(() => {
-    if (query.get('cat') === 'hr') {
-      setCategory('hr');
-    } else {
-      setCategory('frontend');
+    const category = query.get("cat");
+    switch (category) {
+      case "hr":
+        setCategory("hr");
+        break;
+      case "ea":
+        setCategory("ea");
+        break;
+      default:
+        setCategory("frontend");
+        break;
     }
   }, [query]);
 
@@ -24,7 +33,9 @@ function App() {
     return (
       <div>
         <div className="jobs">
-          {Array.from({length: 10}, (_, index) => <JobSkeleton key={index} />)}
+          {Array.from({ length: 10 }, (_, index) => (
+            <JobSkeleton key={index} />
+          ))}
         </div>
       </div>
     );
@@ -55,7 +66,9 @@ function App() {
 
   return (
     <div>
-      <div>({jobs.length} {convertCategoryTitle(category)} jobs)</div>
+      <div>
+        ({jobs.length} {convertCategoryTitle(category)} jobs)
+      </div>
       <div className="jobs">
         {jobs.map((job, index) => (
           <Job

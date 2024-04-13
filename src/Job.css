@@ -17,3 +17,8 @@
 .data {
   min-width: 0;
 }
+
+.date {
+  font-size: 12px;
+  color: #333333;
+}

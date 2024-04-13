@@ -1,5 +1,8 @@
-import { Link, Outlet } from 'react-router-dom';
-import './root.css';
+import "./root.css";
+
+import { Link, Outlet } from "react-router-dom";
+
+import { categoryTitleMap } from "../utils/convert-category-title";
 
 export default function Root() {
   return (
@@ -8,12 +11,11 @@ export default function Root() {
         <h1>Built In Jobs</h1>
         <nav className="nav">
           <ul>
-            <li>
-              <Link to={`/?cat=frontend`}>Frontend</Link>
-            </li>
-            <li>
-              <Link to={`/?cat=hr`}>HR + Recruiting</Link>
-            </li>
+            {Object.keys(categoryTitleMap).map((key) => (
+              <li key={key}>
+                <Link to={`/?cat=${key}`}>{categoryTitleMap[key]}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <Outlet />

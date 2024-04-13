@@ -1,34 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const urls = {
-  frontend: "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=149&subcategories=&experiences=1%2C1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=2&per_page=100&page=1&search=frontend&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true",
+  frontend:
+    "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=149&subcategories=&experiences=1%2C1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=2&per_page=100&page=1&search=frontend&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true",
   hr: "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=150&subcategories=&experiences=1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=&per_page=100&page=1&search=&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true",
-}
+  ea: "https://api.builtin.com/services/job-retrieval/legacy-jobs?categories=154&subcategories=&experiences=1-3%2C3-5%2C3%2C5&industry=&company_sizes=&regions=&locations=&working_option=&per_page=100&page=1&search=executive%20assistant&sortStrategy=recency&job_locations=&company_locations=&jobs_board=true&national=true",
+};
 
 export function useData(category) {
   const [builtinData, setBuiltinData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-    // Fetch Built In data
-    useEffect(() => {
-      let shouldGetData = true;
-  
-      const getData = async () => {
-        setIsLoading(true);
-        const url = urls[category];
-        const response = await fetch(url);
-        const data = await response.json();
+  // Fetch Built In data
+  useEffect(() => {
+    let shouldGetData = true;
 
-        if (shouldGetData) {
-          setBuiltinData(data);
-          setIsLoading(false);
-        }
+    const getData = async () => {
+      setIsLoading(true);
+      const url = urls[category];
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (shouldGetData) {
+        setBuiltinData(data);
+        setIsLoading(false);
       }
-  
-      getData();
-  
-      return () => shouldGetData = false;
-    }, [category]);
+    };
 
-    return [builtinData, isLoading];
+    getData();
+
+    return () => (shouldGetData = false);
+  }, [category]);
+
+  return [builtinData, isLoading];
 }
