@@ -14,6 +14,11 @@
   text-align: center;
 }
 
+.logo img {
+  max-width: 64px;
+  max-height: 64px;
+}
+
 .data {
   min-width: 0;
 }
